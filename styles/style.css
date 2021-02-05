@@ -1,0 +1,10 @@
+html {
+    font-size: 32px;
+}
+
+a, a:hover, a:visited, a:active {
+    color: red;
+    background-color: transparent;
+    text-decoration: none;
+}
+
