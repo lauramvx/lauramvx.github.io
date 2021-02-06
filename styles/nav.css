@@ -20,7 +20,7 @@ nav p {
     margin: 0.5rem 0;
 }
 
-footer p {
+footer p, .frontpage footer p {
     font-size: 0.5625rem;
     font-style: italic;
 }
@@ -36,10 +36,4 @@ footer p {
 .frontpage p {
     font-size: 1rem;
     font-style: italic;
-}
-
-.frontpage footer p {
-	font-size: 0.5625rem;
-    font-style: italic;
-	vertical-align: text-bottom;
 }
