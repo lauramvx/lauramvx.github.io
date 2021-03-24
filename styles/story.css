@@ -8,3 +8,8 @@ p {
 	margin-left: 20%;
 	margin-right: 20%;
 }
+
+aside p {
+	font-size: 0.75rem;
+	margin: 1.5rem 0;
+}
