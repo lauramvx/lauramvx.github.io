@@ -26,6 +26,7 @@ sha256sum -c mit-scheme-c-9.2-1-x86_64.pkg.tar.zst
 
 To verify the signature:
 
+gpg --keyserver keys.openpgp.org --recv-keys 85274C243D118B715F56DAF5B12234E55691131F
 gpg --verify mit-scheme-c-9.2-1-x86_64.pkg.tar.zst.asc mit-scheme-c-9.2-1-x86_64.pkg.tar.zst
 
 If either of these fails, something is wrong with your download and you shouldn't
