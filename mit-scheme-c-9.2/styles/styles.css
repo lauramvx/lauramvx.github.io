@@ -1,0 +1,30 @@
+body {
+  margin-right: 20%;
+	margin-left: 20%;
+	padding: 0 20px 20px 20px;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+a, a:hover, a:visited, a:active {
+  color: red;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+table {
+  width: 100%;
+  text-align: right;
+  margin: auto;
+}
+
+th, td {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+code {
+  font-size: 120%;
+}

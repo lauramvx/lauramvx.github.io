@@ -1,0 +1,31 @@
+# Maintainer : Stupid <lesbianhouse@gmx.com>
+
+pkgname=mit-scheme-c
+pkgver=9.2
+pkgrel=1
+pkgdesc='MIT-Scheme version 9.2 packaged for modern Linux. GPL-2.0-only with an exception for linking OpenSSL.'
+arch=('x86_64')
+url='https://ftp.gnu.org/gnu/mit-scheme/stable.pkg/9.2/mit-scheme-c-9.2.tar.gz'
+license=('GPL-2.0-only')
+depends=('gcc')
+source=('mit-scheme-c-9.2.tar.gz')
+sha256sums=('4f6a16f9c7d4b4b7bb3aa53ef523cad39b54ae1eaa3ab3205930b6a87759b170')
+
+prepare() {
+	# changes a variable declaration from long to extern to avoid variable
+	# declaration conflicts in modern gcc
+	cd "$pkgname-$pkgver"/src
+	sed -i '221s/.*/extern long C_return_value;/' microcode/cmpint.c
+}
+
+build() {
+	# builds from liarc
+	cd "$pkgname-$pkgver"/src
+	./etc/make-liarc.sh
+}
+
+package() {
+	# installs the package
+	cd "$pkgname-$pkgver"/src
+	make DESTDIR="$pkgdir" install
+}

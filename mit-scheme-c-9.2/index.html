@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en-IE">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="styles/styles.css" rel="stylesheet" />
+    <title>MIT-Scheme-c-9.2</title>
+  </head>
+  <body>
+    <h1>MIT-Scheme-c-9.2</h1>
+    <h2>packaged for modern linux</h2>
+    <p>
+    suppose you want to run MIT-Scheme over SWANK, using a frontend like SLIME
+    (for Emacs, <a href="https://github.com/slime/slime/tree/master">click</a>)
+     or slimv (for vim, <a href="https://github.com/kovisoft/slimv">click</a>).
+    you might find it doesn't work.
+    </p>
+    <p>
+    swank-mit-scheme.scm (<a href="https://github.com/slime/slime/blob/master/contrib/swank-mit-scheme.scm">click</a>, <a href="https://github.com/slime/slime/blob/a378958d3b1cfb0ec8e60ec5404b82dbd7dc55c5/contrib/swank-mit-scheme.scm#L11">l.11</a>), which contains the code 
+    responsible handling MIT-Scheme over SWANK, states that "You need MIT
+    Scheme 9.2". today that is quite an old version, and it might not
+    compile on your machine.
+    </p>
+    <p>
+    mit-scheme-c-9.2 is a standalone version that links with C and doesn't
+    require bootstrapping with even older versions of Scheme to work. i was
+    able to get it working with a simple patch to make gcc stop complaining,
+    but it only worked on
+    some machines and not others. to simplify things, i put together some
+    precompiled binaries, and have included them here for anyone who wants
+    to do the same thing as me.
+    </p>
+    <p>
+    this is a hack, not a port. <i>caveat emptor</i>.
+    i install to distrobox containers
+    (<a href="https://distrobox.it/">click</a>)
+    instead of my main OS just in case (if you do that, you'll need to install
+    Emacs/SLIME or vim/slimv in the same container).
+    </p>
+     <table class="downloads">
+      <tr>
+        <th class="downloads">Source</th>
+        <th class="downloads">download</th>
+        <th class="downloads">checksum</th>
+        <th class="downloads">signature</th>
+        <th class="downloads">readme</th>
+      <tr>
+        <td class="downloads">Source:</td>
+        <td class="downloads"><a href="source/mit-scheme-c-9.2.tar.gz">mit-scheme-c-9.2.tar.gz</a></td>
+        <td class="downloads"><a href="source/mit-scheme-c-9.2.tar.gz.sha256">sha256</a></td>
+        <td class="downloads"><a href="source/mit-scheme-c-9.2.tar.gz.asc">gpg</a></td>
+        <td class="downloads"><a href="source/README">README</a></td>
+      </tr>
+      <tr>
+        <th class="downloads">Binaries</th>
+      </tr>
+      <tr>
+        <td class="downloads">Debian:</td>
+        <td class="downloads"><a href="debian/binaries/mit-scheme-c-9.2.deb">mit-scheme-c-9.2.deb</a></td>
+        <td class="downloads"><a href="debian/binaries/mit-scheme-c-9.2.deb.sha256">sha256</a></td>
+        <td class="downloads"><a href="debian/binaries/mit-scheme-c-9.2.deb.asc">gpg</a></td>
+        <td class="downloads"><a href="debian/binaries/README">README</a></td>
+      </tr>
+      <tr>
+      <td class="downloads">Arch:</td>
+      <td class="downloads"><a href="arch/binaries/mit-scheme-c-9.2-1-x86_64.pkg.tar.zst">mit-scheme-c.9.2-1-x86_64.pkg.tar.zst</a></td>
+      <td class="downloads"><a href="arch/binaries/mit-scheme-c-9.2-1-x86_64.pkg.tar.zst.sha256">sha256</a></td>
+      <td class="downloads"><a href="arch/binaries/mit-scheme-c-9.2-1-x86_64.pkg.tar.zst.asc">gpg</a></td>
+      <td class="downloads"><a href="arch/binaries/README">README</a></td>
+      </tr>
+      <tr>
+        <th class="downloads">Packages</th>
+      </tr>
+      <tr>
+        <td class="downloads">Arch</td>
+        <td class="downloads"><a href="arch/package/PKGBUILD">PKGBUILD, </a><a href="arch/package/mit-scheme-c-9.2.tar.gz">mit-scheme-c-9.2.tar.gz</a></td>
+        <td class="downloads"><a href="arch/package/mit-scheme-c-9.2.tar.gz.sha256">sha256</a></td>
+        <td class="downloads"><a href="arch/package/mit-scheme-c-9.2.tar.gz.asc">gpg</a></td>
+        <td class="downloads"><a href="arch/package/README">README</a></td>
+      </tr>
+     </table>    <p>
+    to reproduce my steps from scratch, you can do the following:
+    </p>
+    <pre><code>
+    wget https://ftp.gnu.org/gnu/mit-scheme/stable.pkg/9.2/mit-scheme-c-9.2.tar.gz
+    tar -xzf mit-scheme-c-9.2.tar.gz
+    cd mit-scheme-c-9.2/src
+    sed -i '221s/.*/extern long C_return_value;/' microcode/cmpint.c
+    ./etc/make-liarc.sh
+    make install
+    </code></pre>
+    <p>
+    i've also included an Arch package that reproduces these steps, and mirrored
+    the (unpatched) source code from ftp.gnu.org/mit-scheme
+    (<a href="https://ftp.gnu.org/gnu/mit-scheme">click</a>).
+    for install instructions, click on the relevant README.
+    </p>
+   <p>
+    mit-scheme is free software. mit-scheme-c-9.2 is licensed under the
+    GNU General Public License version 2 (GPLv2) with an exception for
+    linking OpenSSL. it is reproduced here with the same license. read
+    the entire license at COPYING (<a href="COPYING">click</a>).
+    </p>
+  </body>
+</html>
