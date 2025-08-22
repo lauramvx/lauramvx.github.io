@@ -13,7 +13,7 @@ https://web.mit.edu/scheme_v9.2/doc/mit-scheme-ref/index.html#Top
 
 3. Verify File Integrity
 
-To cerify the file integrity, download the sha256 checksum and gpg signature
+To verify the file integrity, download the sha256 checksum and gpg signature
 included with this download. You should have a single directory containing the files:
 	mit-scheme-c-9.2.tar.gz
 	mit-scheme-c-9.2.tar.gz.asc
